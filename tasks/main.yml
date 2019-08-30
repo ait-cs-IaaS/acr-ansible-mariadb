@@ -1,0 +1,30 @@
+- name: Install MariaDB.
+  apt:
+    name:
+      - mariadb-server
+      - mariadb-client
+      - python3-mysqldb
+      - python-mysqldb
+    state: present
+    update_cache: yes
+
+- name: start and enable mysql
+  service: name=mysql state=started enabled=yes
+
+- name: create mysql databases
+  mysql_db:
+    name: "{{ item.name }}"
+    collation: "{{ item.collation | default('utf8_general_ci') }}"
+    encoding: "{{ item.encoding | default('utf8') }}"
+    login_user: "root"
+  with_items: "{{ mariadb_databases }}"
+
+- name: create mysql users
+  mysql_user:
+    name: "{{ item.name }}"
+    host: "{{ item.host | default('localhost') }}"
+    password: "{{ item.password }}"
+    priv: '{{ item.privileges | default( item.name + ".*:ALL,GRANT") }}'
+    append_privs: "{{ item.append_privileges | default('no') }}"
+    login_user: "root"
+  with_items: "{{ mariadb_users }}"
