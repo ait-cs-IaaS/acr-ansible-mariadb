@@ -1,0 +1,22 @@
+galaxy_info:
+  author: Wolfgang Hotwagner
+  description: mariadb
+  company: Austrian Institute of Technology (AIT)
+
+  license: MIT
+  min_ansible_version: 2.4
+  platforms:
+    - name: Ubuntu
+      versions:
+        - 18.04 LTS
+
+  categories:
+    - mariadb
+    - database
+    - mysql
+    - ubuntu
+
+  galaxy_tags: []
+
+dependencies: []
+  
