@@ -3,8 +3,7 @@
     name:
       - mariadb-server
       - mariadb-client
-      - python3-mysqldb
-      - python-mysqldb
+      - "{{ 'python3-mysqldb' if ansible_python.version.major == 3 else 'python-mysqldb' }}"
     state: present
     update_cache: yes
 
