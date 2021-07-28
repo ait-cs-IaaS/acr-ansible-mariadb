@@ -1,22 +1,16 @@
+---
 galaxy_info:
+  role_name: mariadb
   author: Wolfgang Hotwagner
-  description: mariadb
-  company: Austrian Institute of Technology (AIT)
-
+  description: This role installs and configures MariaDB.
+  company: Austrian Institute of Technology
   license: GPL-3.0
-  min_ansible_version: 2.4
+  min_ansible_version: 2.8
   platforms:
     - name: Ubuntu
       versions:
-        - 18.04 LTS
-
-  categories:
-    - mariadb
+        - bionic
+        - focal
+  galaxy_tags:
     - database
-    - mysql
-    - ubuntu
-
-  galaxy_tags: []
-
 dependencies: []
-  
